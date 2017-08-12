@@ -1,0 +1,28 @@
+{% extends 'wrong/base.html' %}
+{% block body %}
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>Gerald was wrong about: {{ object.Subject }}</h4>
+            </div>
+            <div class="panel-body">
+                <h4>Date/Time: {{ object.DateTime }}</h4>
+                <h4>Gerald was wrong for {{ object.TimeWrong }} minutes</h4>
+                <h4>Details: {{ object.Details }}</h4><br>
+
+                <!--Update-->
+                <a href="{% url 'wrong:wrong-update' object.id %}" class="btn btn-default btn-lg" role="button">
+                                <span class="glyphicon glyphicon-edit"></span>
+                </a>
+                <!--Delete-->
+                <form action="{% url 'wrong:wrong-delete' object.id %}" method="post" style="display: inline;">
+                    {% csrf_token%}
+                    <input type="hidden" name="wrong_id" value="{{ object.id }}"/>
+                    <button type="submit" class="btn btn-default btn-lg" style="margin-left: 5px">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

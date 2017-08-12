@@ -1,0 +1,25 @@
+{% extends 'wrong/base.html' %}
+{% block body %}
+<div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Gerald's Wrong's</h3>
+            </div>
+</div>
+<div class="row" style="margin-left: 2px">
+     <div class="col-md-12">
+        <h3>Performance Review: {{ total_minutes_wrong }}</h3><br>
+    </div>
+    {% if wrongs %}
+        {% for wrong in wrongs %}
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h5>Subject: <a href="{{ wrong.pk }}">{{ wrong.Subject }}</a></h5>
+                        <h6>Date: {{ wrong.DateTime }}</h6>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+{% endblock %}
