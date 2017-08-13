@@ -7,7 +7,9 @@ from django.core.urlresolvers import reverse_lazy
 from django.utils.decorators import method_decorator
 
 # Create your views here.
-@method_decorator(csrf_exempt)
+
+
+@method_decorator(csrf_exempt, name='dispatch')
 class CreateOccurrence(CreateView):
     model = Occurrence
     fields = ['TimeWrong', 'Subject', 'Details']
@@ -36,13 +38,13 @@ class WrongDetail(generic.DetailView):
     template_name = 'wrong/wrong_detail.html'
 
 
-@method_decorator(csrf_exempt)
+@method_decorator(csrf_exempt, name='dispatch')
 class WrongUpdate(UpdateView):
     model = Occurrence
     fields = ['TimeWrong', 'Subject', 'Details']
 
 
-@method_decorator(csrf_exempt)
+@method_decorator(csrf_exempt, name='dispatch')
 class WrongDelete(DeleteView):
     model = Occurrence
     success_url = reverse_lazy('wrong:wrong-list')
