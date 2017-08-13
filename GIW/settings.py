@@ -24,12 +24,6 @@ SECRET_KEY = '(%emz)hc^4t_ql0ubnfso89e+se)$x3!###x2)-&qi4q6njbn%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-X_FRAME_OPTIONS = 'DENY'
-SECURE_CONTENT_TYPE_NOSNIFF = True
-SECURE_BROWSER_XSS_FILTER = True
-SESSION_COOKIE_SECURE = True
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-CSRF_COOKIE_SECURE = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '71.196.39.30', '*']
 
@@ -57,6 +51,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+X_FRAME_OPTIONS = 'DENY'
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+SESSION_COOKIE_SECURE = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+CSRF_COOKIE_SECURE = True
 
 ROOT_URLCONF = 'GIW.urls'
 
