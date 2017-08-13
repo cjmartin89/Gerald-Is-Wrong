@@ -25,6 +25,7 @@
         <ul class="nav navbar-nav navbar-right">
                 <li>
                     <a href="{% url 'wrong:wrong-create'%}">
+                        {% csrf_token %}
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add Occurrence
                     </a>
                 </li>

@@ -1,13 +1,13 @@
-from django.shortcuts import render
+
+from django.views.decorators.csrf import csrf_exempt
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Occurrence
 from django.core.urlresolvers import reverse_lazy
-from django.db.models import Q
+from django.utils.decorators import method_decorator
 
 # Create your views here.
-
-
+@method_decorator(csrf_exempt)
 class CreateOccurrence(CreateView):
     model = Occurrence
     fields = ['TimeWrong', 'Subject', 'Details']
@@ -36,11 +36,13 @@ class WrongDetail(generic.DetailView):
     template_name = 'wrong/wrong_detail.html'
 
 
+@method_decorator(csrf_exempt)
 class WrongUpdate(UpdateView):
     model = Occurrence
     fields = ['TimeWrong', 'Subject', 'Details']
 
 
+@method_decorator(csrf_exempt)
 class WrongDelete(DeleteView):
     model = Occurrence
     success_url = reverse_lazy('wrong:wrong-list')
