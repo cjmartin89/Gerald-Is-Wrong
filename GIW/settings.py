@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['127.0.0.1', '71.196.39.30', '*']
 # Application definition
 
 INSTALLED_APPS = [
+    'quotes.apps.QuotesConfig',
     'wrong.apps.WrongConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -122,9 +123,11 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'America/New_York'
 
+DATE_INPUT_FORMATS = ['%m/%d/%Y']
+
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 

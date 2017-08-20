@@ -1,23 +1,24 @@
 from django.conf.urls import url
 from . import views
 
+
 app_name = 'wrong'
 
 urlpatterns = [
     # Occurrence Index View
-    url(r'^occurrences/$', views.WrongView.as_view(), name='wrong-list'),
+    url(r'^wrong/$', views.index, name='wrong-list'),
 
     # Occurrence/wrong/add/
-    url(r'^occurrences/add/$', views.CreateOccurrence.as_view(), name='wrong-create'),
+    url(r'^wrong/add/$', views.CreateOccurrence.as_view(), name='wrong-create'),
 
     # Occurrence/wrong/2/
-    url(r'^occurrences/(?P<pk>[0-9]+)/$', views.WrongDetail.as_view(), name='wrong-detail'),
+    url(r'^wrong/(?P<pk>[0-9]+)/$', views.WrongDetail.as_view(), name='wrong-detail'),
 
     # Occurrence/wrong/2/ Update View
-    url(r'^occurrence/(?P<pk>[0-9]+)/$', views.WrongUpdate.as_view(), name='wrong-update'),
+    url(r'^wrong/(?P<pk>[0-9]+)/update$', views.WrongUpdate.as_view(), name='wrong-update'),
 
     # Occurrence/wrong/delete
-    url(r'^occurrence/(?P<pk>[0-9]+)/delete/$', views.WrongDelete.as_view(), name='wrong-delete'),
+    url(r'^wrong/(?P<pk>[0-9]+)/delete/$', views.WrongDelete.as_view(), name='wrong-delete'),
 
     # # Percentage of Time Wrong
     # url(r'^count/$', views.percentage_view(), name='wrong-counter'),

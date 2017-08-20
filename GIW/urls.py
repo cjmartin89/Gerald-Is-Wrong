@@ -19,7 +19,8 @@ from django.conf.urls import include, url
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^wrong/', include('wrong.urls')),
+    url(r'^', include('wrong.urls')),
+    url(r'^', include('quotes.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/wrong/', include('wrong.api.urls')),
 ]

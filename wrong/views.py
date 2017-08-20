@@ -1,10 +1,11 @@
-
+from django.db.models import Q
 from django.views.decorators.csrf import csrf_exempt
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Occurrence
 from django.core.urlresolvers import reverse_lazy
 from django.utils.decorators import method_decorator
+from django.shortcuts import render
 
 # Create your views here.
 
@@ -15,22 +16,32 @@ class CreateOccurrence(CreateView):
     fields = ['TimeWrong', 'Subject', 'Details']
 
 
-class WrongView(generic.ListView):
-    template_name = 'wrong/wrong_view.html'
+def index(request):
+        all_occurrences = Occurrence.objects.all().order_by("-pk")
+        total_minutes_wrong = 0
+        for wrong in all_occurrences:
+            total_minutes_wrong += wrong.TimeWrong
 
-    def get_queryset(self):
-        qs = Occurrence.objects.all().order_by("-pk")
-        query = self.request.GET.get('q', None)
-        if query is not None:
-            qs = qs.filter(Subject__icontains=query)
-        return qs
+        minutes_in_year = 525600
+        minutes_right = minutes_in_year - total_minutes_wrong
+        percentage_right = minutes_right / minutes_in_year * 100
 
-    # def get_total_time_wrong:
-    #     total_time_wrong = 0
-    #     total_time_wrong += Occurrence.TimeWrong
-    #     return  total_time_wrong
+        context = {
+            'all_occurrences': all_occurrences,
+            'percentage_right': percentage_right,
+        }
+        query = request.GET.get("q")
+        if query:
+            all_occurrences = all_occurrences.filter(
+                Q(Subject__icontains=query) |
+                Q(Details__icontains=query))
+            return render(request, 'wrong/wrong_view.html', {
+                'all_occurrences': all_occurrences,
+            })
+        else:
+            return render(request, 'wrong/wrong_view.html', context)
 
-    context_object_name = 'wrongs'
+
 
 
 class WrongDetail(generic.DetailView):
@@ -48,18 +59,3 @@ class WrongUpdate(UpdateView):
 class WrongDelete(DeleteView):
     model = Occurrence
     success_url = reverse_lazy('wrong:wrong-list')
-
-
-# def percentage_view(request):
-#     occurrences = Occurrence.objects.all()
-#
-#     total_minutes_wrong = 1
-#
-#     context = {
-#         'total_minutes_wrong' : total_minutes_wrong
-#     }
-#
-#     # for wrong in occurrences:
-#     #     total_minutes_wrong += Occurrence.TimeWrong
-#
-#     render(request, 'wrong/performance_view.html', context )

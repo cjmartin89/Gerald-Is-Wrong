@@ -2,7 +2,7 @@
 {% block body %}
 <div class="container">
 	<div class="row">
-		<h2>Search Occurrences</h2>
+		<h2>Search Quotes</h2>
            <form id="custom-search-input ">
                             <div class="input-group col-md-12">
                                 <input type="text" class="form-control" placeholder="Search" name="q" value="{{ request.GET.q }}" />
@@ -17,26 +17,22 @@
 </div><br>
 <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Gerald's Wrong's</h3>
+                <h3 class="panel-title">Quote's</h3>
             </div>
 </div>
 <div class="row" style="margin-left: 2px">
-     <div class="col-md-12">
-        <h3>Performance Review: {{ percentage_right|floatformat:-2 }}%</h3><br>
-    </div>
-    {% if all_occurrences %}
-        {% for wrong in all_occurrences %}
+    {% if quotes %}
+        {% for quote in quotes %}
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <h5>Subject: <a href="{{ wrong.pk }}">{{ wrong.Subject }}</a></h5>
-                        <h6>Date: {{ wrong.DateTime }}</h6>
+                        <h5>Quote:<br><br> <a href="{{ quote.pk }}">{{ quote.Quote}}</a></h5>
+                        <h6>Date: {{ quote.DateTime }}</h6>
+                        <h4>-{{ quote.Person }}</h4>
                     </div>
                 </div>
             </div>
         {% endfor %}
-        {% else %}
-        <h4>There are no wrong's</h4>
     {% endif %}
     </div>
 {% endblock %}

@@ -3,19 +3,19 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h4>Gerald was wrong about: {{ object.Subject }}</h4>
+                <h4> {{ object.Subject }}</h4>
             </div>
             <div class="panel-body">
                 <h4>Date/Time: {{ object.DateTime }}</h4>
-                <h4>Duration of wrongness: {{ object.TimeWrong }}</h4>
-                <h4>Quote: {{ object.Details }} </h4>
+                <h4>Quote: {{ object.Quote }} </h4>
+                <h4>-{{ object.Person }}</h4>
 
                 <!--Update-->
-                <a href="{% url 'wrong:wrong-update' object.id %}" class="btn btn-default btn-lg" role="button">
+                <a href="{% url 'quotes:quote-update' object.id %}" class="btn btn-default btn-lg" role="button">
                                 <span class="glyphicon glyphicon-edit"></span>
                 </a>
                 <!--Delete-->
-                <form action="{% url 'wrong:wrong-delete' object.id %}" method="post" style="display: inline;">
+                <form action="{% url 'quotes:quote-delete' object.id %}" method="post" style="display: inline;">
                     {% csrf_token %}
                     <input type="hidden" name="wrong_id" value="{{ object.id }}"/>
                     <button type="submit" class="btn btn-default btn-lg" style="margin-left: 5px">
