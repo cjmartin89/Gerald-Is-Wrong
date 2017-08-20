@@ -1,3 +1,4 @@
+from __future__ import division
 from django.db.models import Q
 from django.views.decorators.csrf import csrf_exempt
 from django.views import generic
@@ -6,6 +7,7 @@ from .models import Occurrence
 from django.core.urlresolvers import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.shortcuts import render
+
 
 # Create your views here.
 
