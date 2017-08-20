@@ -24,7 +24,7 @@ def index(request):
 
         minutes_in_year = 525600
         minutes_right = minutes_in_year - total_minutes_wrong
-        percentage_right = minutes_right / 52560
+        percentage_right = minutes_right / 525600
 
         context = {
             'all_occurrences': all_occurrences,
