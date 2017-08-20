@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['127.0.0.1', '71.196.39.30', '*']
 # Application definition
 
 INSTALLED_APPS = [
-    'quotes.apps.QuotesConfig',
+    'quotes.apps.QuotesConfig'
     'wrong.apps.WrongConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -87,8 +87,12 @@ WSGI_APPLICATION = 'GIW.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'GIW_Database',
+        'USER': 'cjmartin89',
+        'PASSWORD': '4414140a',
+        'HOST': 'webappdatabases.cxcjngu9vtik.us-east-2.rds.amazonaws.com',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
     }
 }
 
@@ -119,11 +123,9 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'America/New_York'
 
-DATE_INPUT_FORMATS = ['%m/%d/%Y']
-
 USE_I18N = True
 
-USE_L10N = False
+USE_L10N = True
 
 USE_TZ = True
 
