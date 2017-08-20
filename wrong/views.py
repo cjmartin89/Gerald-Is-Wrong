@@ -24,13 +24,15 @@ def index(request):
 
         minutes_in_year = 525600
         minutes_right = minutes_in_year - total_minutes_wrong
-        percentage_right = (minutes_right / minutes_in_year) * 100
+        percentage_right = minutes_right / minutes_in_year * 100
 
         context = {
             'all_occurrences': all_occurrences,
             'percentage_right': percentage_right,
             'total_minutes_wrong': total_minutes_wrong,
-            "minutes_in_year": minutes_in_year,
+            'minutes_in_year': minutes_in_year,
+            'minutes_right': minutes_right,
+
         }
         query = request.GET.get("q")
         if query:
