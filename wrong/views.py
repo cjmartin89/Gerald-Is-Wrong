@@ -18,21 +18,11 @@ class CreateOccurrence(CreateView):
 
 def index(request):
         all_occurrences = Occurrence.objects.all().order_by("-pk")
-        total_minutes_wrong = 0
-        for wrong in all_occurrences:
-            total_minutes_wrong += wrong.TimeWrong
-
-        minutes_in_year = 525600
-        minutes_right = minutes_in_year - total_minutes_wrong
-        percentage_right = minutes_right / 525600
+        calculate_percentage_right()
 
         context = {
             'all_occurrences': all_occurrences,
-            'percentage_right': percentage_right,
-            'total_minutes_wrong': total_minutes_wrong,
-            'minutes_in_year': minutes_in_year,
-            'minutes_right': minutes_right,
-
+            'percentage_right': calculate_percentage_right()
         }
         query = request.GET.get("q")
         if query:
@@ -63,3 +53,17 @@ class WrongUpdate(UpdateView):
 class WrongDelete(DeleteView):
     model = Occurrence
     success_url = reverse_lazy('wrong:wrong-list')
+
+
+def calculate_percentage_right():
+    wrongs = Occurrence.objects.all()
+    total_minutes_wrong = 0
+
+    for wrong in wrongs:
+        total_minutes_wrong += wrong.TimeWrong
+
+    minutes_in_year = 525600
+    minutes_right = minutes_in_year - total_minutes_wrong
+    percentage_right = (minutes_right / minutes_in_year) * 100
+
+    return percentage_right
