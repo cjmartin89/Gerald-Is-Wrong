@@ -30,6 +30,7 @@ def index(request):
             'all_occurrences': all_occurrences,
             'percentage_right': percentage_right,
             'total_minutes_wrong': total_minutes_wrong,
+            "minutes_in_year": minutes_in_year,
         }
         query = request.GET.get("q")
         if query:
