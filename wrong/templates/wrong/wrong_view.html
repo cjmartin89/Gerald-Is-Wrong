@@ -23,6 +23,7 @@
 <div class="row" style="margin-left: 2px">
      <div class="col-md-12">
         <h3>Performance Review: {{ percentage_right|floatformat:-2 }}%</h3><br>
+         <h3>{{ total_minutes_wrong }}</h3>
     </div>
     {% if all_occurrences %}
         {% for wrong in all_occurrences %}
