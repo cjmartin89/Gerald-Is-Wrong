@@ -29,13 +29,11 @@ def index(request):
             all_occurrences = all_occurrences.filter(
                 Q(Subject__icontains=query) |
                 Q(Details__icontains=query))
-            return render(request, 'wrong/wrong_view.html', {
-                'all_occurrences': all_occurrences,
-            })
+            context = {'all_occurrences': all_occurrences,
+                       'percentage_right': calculate_percentage_right()}
+            return render(request, 'wrong/wrong_view.html', context)
         else:
             return render(request, 'wrong/wrong_view.html', context)
-
-
 
 
 class WrongDetail(generic.DetailView):
