@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['127.0.0.1', '71.196.39.30', '*']
 # Application definition
 
 INSTALLED_APPS = [
-    'quotes.apps.QuotesConfig'
+    'quotes.apps.QuotesConfig',
     'wrong.apps.WrongConfig',
     'django.contrib.admin',
     'django.contrib.auth',
