@@ -64,6 +64,6 @@ def calculate_percentage_right():
 
     minutes_in_year = 525600
     minutes_right = minutes_in_year - total_minutes_wrong
-    percentage_right = (525500 / 525600) * 100
+    percentage_right = (minutes_right / minutes_in_year) * 100
 
     return percentage_right
