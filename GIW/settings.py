@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'rest_framework'
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -97,6 +97,7 @@ DATABASES = {
 }
 
 
+
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -125,9 +126,11 @@ TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
+
+DATE_INPUT_FORMATS = ['%m/%d/%Y']
 
 
 # Static files (CSS, JavaScript, Images)
