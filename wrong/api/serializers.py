@@ -1,9 +1,10 @@
 from rest_framework import serializers
 from wrong.models import Occurrence
 
+
 class WrongModelSerializer(serializers.ModelSerializer):
     class Meta:
-        model=Occurrence
+        model = Occurrence
         fields = [
-            'pk', 'TimeWrong', 'Subject', 'Details'
+            'pk', 'TimeWrong', 'Subject', 'Details', 'DateTime'
         ]
