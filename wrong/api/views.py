@@ -1,7 +1,8 @@
+from django.utils.decorators import method_decorator
 from rest_framework import generics
 from .serializers import WrongModelSerializer
 from wrong.models import Occurrence
-
+from django.views.decorators.csrf import csrf_exempt
 
 class OccurrenceListAPIView(generics.ListAPIView):
     serializer_class = WrongModelSerializer
@@ -14,6 +15,7 @@ class OccurrenceCreateAPIView(generics.CreateAPIView):
     serializer_class = WrongModelSerializer
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class OccurrenceDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = WrongModelSerializer
 
