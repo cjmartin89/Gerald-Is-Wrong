@@ -4,6 +4,7 @@ from .serializers import WrongModelSerializer
 from wrong.models import Occurrence
 from django.views.decorators.csrf import csrf_exempt
 
+
 class OccurrenceListAPIView(generics.ListAPIView):
     serializer_class = WrongModelSerializer
 
