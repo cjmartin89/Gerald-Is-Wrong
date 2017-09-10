@@ -6,5 +6,5 @@ class QuotesModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Quotes
         fields = [
-            'pk', 'Quote', 'Person', 'DateTime'
+            'pk', 'Quote', 'Person', 'DateTime'1
         ]
