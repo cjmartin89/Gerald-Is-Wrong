@@ -91,7 +91,7 @@ DATABASES = {
         'NAME': 'GIW_Database',
         'USER': 'cjmartin89',
         'PASSWORD': '4414140a',
-        'HOST': 'webappdatabases.cxcjngu9vtik.us-east-2.rds.amazonaws.com',   # Or an IP Address that your DB is hosted on
+        'HOST': 'giwdatabase.cxcjngu9vtik.us-east-2.rds.amazonaws.com',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }
